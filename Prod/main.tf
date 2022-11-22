@@ -9,7 +9,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.32.0"
+      version = "2.99.0"
     }
   }
 }
@@ -24,8 +24,6 @@ module "resourceGroupProd" {
     naming = module.global.naming
     config = module.global.config
   }
-  /* tags   = var.tags    */
-//check the tags
 }
 module "global" {
   source = "./modules/global"
