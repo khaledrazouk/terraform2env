@@ -20,16 +20,25 @@ provider "azurerm" {
 
 module "resourceGroupProd" {
   source = "./modules/resourceGroupeProd"
-
+    global = {
+    naming = module.global.naming
+    config = module.global.config
+  }
   /* tags   = var.tags    */
 //check the tags
 }
-
+module "global" {
+  source = "./modules/global"
+}
 
 module "appProd" {
   source  = "./modules/appProd"
-  rg_name = module.resourceGroupProd.rgProd.name
+  /* rg_name = module.resourceGroupProd.rgProd.name */
 
+    global = {
+    naming = module.global.naming
+    config = module.global.config
+  }
   depends_on = [
     module.resourceGroupProd
     ]

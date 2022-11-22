@@ -1,4 +1,4 @@
-
+/* 
 variable "rg_name" {
     type = string
     default = "MonRG"
@@ -17,4 +17,7 @@ variable "app_service_plan_name"{
 variable "app_service_name"{
     type = string
     default = "khaledAppServiceProd"
+} */
+variable "global" {
+  type = object({ naming = map(string), config = map(string) })
 }

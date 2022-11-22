@@ -1,10 +1,9 @@
 # call the resource group
 
 resource "azurerm_app_service_plan" "planProd" {
-  name                = "${var.app_service_plan_name}"
-  location            = var.location
-  resource_group_name = var.rg_name
-
+  name                = "${var.global.naming.planProd}"
+  location            = "${var.global.config.location}"
+  resource_group_name = "${var.global.naming.rgProd}"
   sku {
     tier = "Standard"
     size = "S1"
@@ -15,10 +14,9 @@ resource "azurerm_app_service_plan" "planProd" {
 
 
 resource "azurerm_app_service" "appProd" {
-  depends_on [azurerm_app_service_plan]
-  name                = "${var.app_service_name}"
-  location            = var.location
-  resource_group_name = var.rg_name
+  name                = "${var.global.naming.appProd}"
+  location            = "${var.global.config.location}"
+  resource_group_name = "${var.global.naming.rgProd}"
   app_service_plan_id = azurerm_app_service_plan.planProd.id
 
   site_config {
