@@ -43,3 +43,15 @@ module "appProd" {
 
 }
 
+module "virtualMachineWindows" {
+  source = "./modules/virtualMachineWindows"
+  
+   global = {
+    naming = module.global.naming
+    config = module.global.config
+  }
+  depends_on = [
+    module.resourceGroupProd
+    ]
+}
+
