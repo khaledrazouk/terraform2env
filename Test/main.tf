@@ -20,7 +20,7 @@ provider "azurerm" {
 
 module "resourceGroupTest" {
   source = "./modules/resourceGroupTest"
-    global = {
+  global = {
     naming = module.global.naming
     config = module.global.config
   }
@@ -31,16 +31,28 @@ module "global" {
 }
 
 module "appTest" {
-  source  = "./modules/appTest"
+  source = "./modules/appTest"
   /* rg_name = module.resourceGroupProd.rgProd.name */
 
-    global = {
+  global = {
     naming = module.global.naming
     config = module.global.config
   }
   depends_on = [
     module.resourceGroupTest
-    ]
+  ]
 
 }
 
+
+module "windowsVmTest" {
+  source = "./modules/windowsVmTest"
+
+  global = {
+    naming = module.global.naming
+    config = module.global.config
+  }
+  depends_on = [
+    module.resourceGroupTest
+  ]
+}

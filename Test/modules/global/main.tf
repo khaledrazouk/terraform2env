@@ -13,6 +13,10 @@ output "naming" {
     rgTest  = "rg-khaled-test"
     planTest = "plan-khaled-Test"
     appTest = "khaledApp-service-Test" 
+    vNetTest ="khaled-vnet-Test"
+    subnetTest1 = "khaled-subnet-test1"
+    netInterfaceTest = "khaled-net-interface"
+    windowsVmTest = "khaled-vm-test"
 
   }
 }

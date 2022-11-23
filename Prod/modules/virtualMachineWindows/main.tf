@@ -23,6 +23,7 @@ resource "azurerm_network_interface" "netInterface" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+# i have to add a public ip to be able to connect to my vm mr i can link it with a load balancer wich has a public ip
 
 resource "azurerm_windows_virtual_machine" "windowsVm" {
   name                = var.global.naming.windowsVm
